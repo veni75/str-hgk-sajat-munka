@@ -8,8 +8,8 @@ class TitleCaseStream extends Transform {
         super();
     }
 
-    
-    _transform(chunk, enc, done) {        
+
+    _transform(chunk, enc, done) {
         const output = chunk.toString('utf8').split(' ')
             .map(word => {
                 return `${word[0].toUpperCase()}${word.slice(1)}`;
@@ -36,7 +36,12 @@ const writeableStream = createWriteStream('./szamarCopy.txt')
 readableStream.pipe(writeableStream)
 
 writeableStream.on('finish', () => {
-    console.log('File transform successful.');
+    //console.log('File transform successful.');
+    logger.success('File transform successful')
 });
 
-readableStream.pipe(new TitleCaseStream()).pipe(writeableStream);
+try {
+    readableStream.pipe(new TitleCaseStream()).pipe(writeableStream);
+} catch (err) {
+    logger.error(err)
+}
