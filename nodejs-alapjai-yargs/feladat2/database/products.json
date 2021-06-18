@@ -1,56 +1,56 @@
 {
-    "movies": [
+    "products": [
         {
             "id": 1,
-            "name": "Barth Deverell",
+            "name": "füzet",
             "price": 10,
             "count": 5
         },
         {
             "id": 2,
-            "name": "Lacey Crauford",
+            "name": "pohár",
             "price": 15,
             "count": 15
         },
         {
             "id": 3,
-            "name": "Ogden Spriddle",
+            "name": "toll",
             "price": 20,
             "count": 25
         },
         {
             "id": 4,
-            "name": "Mar Broomer",
+            "name": "szék",
             "price": 30,
             "count": 15
         },
         {
             "id": 5,
-            "name": "Shaun Yeld",
+            "name": "naptár",
             "price": 40,
             "count": 52
         },
         {
             "id": 6,
-            "name": "Holt Eisig",
+            "name": "üveg",
             "price":  50,
             "count": 54
         },
         {
             "id": 7,
-            "name": "Adiana Salzburger",
+            "name": "szoknya",
             "price": 60,
             "count": 55
         },
         {
             "id": 8,
-            "name": "Noelani Coalburn",
+            "name": "nadrág",
             "price": 70,
             "count": 5
         },
         {
             "id": 9,
-            "name": "Farand Macewan",
+            "name": "ajtó",
             "price": 28,
             "count": 75
         },

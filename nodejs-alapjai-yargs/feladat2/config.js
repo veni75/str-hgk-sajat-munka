@@ -1,6 +1,7 @@
+const path = require('path')
 const config = {
-    dbFilePath: './database/movies.json',
-    propName: 'movies'
+    dbFilePath: path.join(__dirname, './database/products.json'),
+    propName: 'products'
   }
   
   module.exports = Object.freeze(config)

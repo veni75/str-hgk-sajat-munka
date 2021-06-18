@@ -1,58 +1,38 @@
 const yargs = require('yargs')
-const { id, producer, title } = require('./option')
-const MoviesApi = require('./movies.api')
-const MoviesService = require('./movies.service')
+const { count } = require('./option')
+const ProductsApi = require('./products.api')
+const ProductsService = require('./products.service')
 const { dbFilePath, propName } = require('./config')
 
-const moviesApi = MoviesApi(dbFilePath, propName)
+const productsApi = ProductsApi(dbFilePath, propName)
 const {
-  getAllMovies,
-  findMovieById,
-  createMovie,
-  editMovie,
-  removeMovie
-} = MoviesService(moviesApi)
+  sum,
+  avg,
+  lessthan
+} = ProductsService(productsApi)
 
 yargs
   .version('1.0.0')
   .usage('Usage: <command> [options]')
   .command({
-    command: 'get',
-    describe: 'Get all movies',
-    handler: () => console.log(getAllMovies())
+    command: 'sum',
+    describe: 'Get all Products price',
+    handler: () => console.log(sum())
   })
   .command({
-    command: 'find',
-    describe: 'Find a movie by id',
-    builder: { id },
-    handler: (args) =>
-      console.log(findMovieById(args.id))
+    command: 'avg',
+    describe: 'Average price',    
+    handler: () => console.log(avg())
   })
   .command({
-    command: 'create',
-    describe: 'Create a new movie',
-    builder: { producer, title },
+    command: 'lessthan',
+    describe: 'Products less than parameter',
+    builder: { count },
     handler: (args) => {
-      console.log(createMovie(args))
+      console.log(lessthan(args.count))
     }
   })
-  .command({
-    command: 'edit',
-    describe: 'Edit a movie',
-    builder: { id, producer, title },
-    handler: (args) => {
-      console.log(editMovie(args))
-    }
-  })
-  .command({
-    command: 'remove',
-    describe: 'Remove a movie by ID',
-    builder: { id },
-    handler: (args) => {
-      removeMovie(args.id)
-      console.log('deleted')
-    }
-  })
+  
   .locale('en')
   .strict()
   .help()
