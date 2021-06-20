@@ -33,15 +33,9 @@ readableStream.on('data', (chunck) => {
 }) */
 
 const writeableStream = createWriteStream('./szamarCopy.txt')
-readableStream.pipe(writeableStream)
 
-writeableStream.on('finish', () => {
-    //console.log('File transform successful.');
-    logger.success('File transform successful')
-});
+writeableStream
+    .on('finish', () => logger.success('File transform successful'))
+    .on('error', err => logger.error(err))
 
-try {
-    readableStream.pipe(new TitleCaseStream()).pipe(writeableStream);
-} catch (err) {
-    logger.error(err)
-}
+readableStream.pipe(new TitleCaseStream()).pipe(writeableStream)
