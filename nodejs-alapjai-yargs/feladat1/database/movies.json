@@ -2,8 +2,8 @@
     "movies": [
         {
             "id": 1,
-            "producer": "Barth Deverell",
-            "title": "Knock Off"
+            "producer": "edited producer",
+            "title": "Edited title"
         },
         {
             "id": 2,
