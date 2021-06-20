@@ -1,18 +1,20 @@
 const ProductsService = (productsApi) => {
-  let products = productsApi.get()
-
-  const sum = () => {
-    let productPrice = products.map(item => item.price * item.count)
+  
+  const sum = async () => {
+    const productsList = await productsApi.get()
+    let productPrice = productsList.map(item => item.price * item.count)
     return productPrice.reduce((acc, current) => acc + current)
   }
 
-  const avg = () => {
-    const priceAll= products.reduce((acc, current) => acc + current.price,0)
-    return priceAll/products.length
+  const avg = async () => {
+    const productsList = await productsApi.get()
+    const priceAll = productsList.reduce((acc, current) => acc + current.price, 0)
+    return priceAll / productsList.length
   }
 
-  const lessthan = (param) => {
-    return products.filter(item => item.count < param)
+  const lessthan = async (param) => {
+    const productsList = await productsApi.get()
+    return productsList.filter(item => item.count < param)
   }
 
   return {

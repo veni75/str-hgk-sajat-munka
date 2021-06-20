@@ -17,19 +17,19 @@ yargs
   .command({
     command: 'sum',
     describe: 'Get all Products price',
-    handler: () => console.log(sum())
+    handler: async () => console.log(await sum())
   })
   .command({
     command: 'avg',
     describe: 'Average price',    
-    handler: () => console.log(avg())
+    handler: async () => console.log(await avg())
   })
   .command({
     command: 'lessthan',
     describe: 'Products less than parameter',
     builder: { count },
-    handler: (args) => {
-      console.log(lessthan(args.count))
+    handler: async (args) => {
+      console.log(await lessthan(args.count))
     }
   })
   

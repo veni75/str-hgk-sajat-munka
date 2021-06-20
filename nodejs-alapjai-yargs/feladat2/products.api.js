@@ -1,8 +1,8 @@
-const { readFileSync } = require('fs')
+const { readFile } = require('fs').promises
 
 const ProductsApi = (path, prop) => ({
-    get() {
-        const dataString = readFileSync(path)
+    async get() {
+        const dataString = await readFile(path)
         return JSON.parse(dataString)[prop]
     }
 })
