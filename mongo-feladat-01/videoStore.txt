@@ -1,0 +1,17 @@
+1. use videoStore
+2-3. db.movies.insert(...)
+4. db.movies.updateMany({},{$set:{ratings:[]}})
+5. db .movies.update({title:"Alkonyat"},{$push:{ratings:4}})
+6. db.movies.updateMany({},{$set:{releaseYear:2000}})
+7.
+8. db.movies.find()
+9-10. pwd()
+function setYearToMovies() {
+    const titles = ["Star wars", "Utazás Dardzsilingbe", "Jurassic Park", "Terminal", "Párbaj", "Azigazság útja", "Avatar", "Terminator", "Titanic", "Alkonyat"];
+    const year = [1981, 1982, 1983, 1991, 1994, 1997, 2003, 2007, 2009];
+    for (let i = 0; i < 10; i += 1) {
+        db.movies.updateOne({ title: titles[i] }, { $set: { releaseYear: year[i] } });
+    }
+}
+setYearToMovies();
+load("C:\\Users\\hadik\\Documents\\Eniko\\traininghalado\\str-hgk-sajat-munka\\mongo-feladat-01\\setMoviesYear.js")
