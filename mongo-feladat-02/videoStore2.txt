@@ -21,4 +21,11 @@
 9. db.movies.find({$and:[{releaseYear:{$lt:2000,$gt:1990}},{category:"action"}]})
 10. db.movies.find({category:{$ne:"fantasy"}})
 11. db.movies.find({$and:[{releaseYear:{$lt:2000}},{$or:[{category:"romantic"},{category:"action"}]}]},{_id:0,title:1,category:1})
-12. 
+12. db.directors.find({},{_id:0,name:1,movies:1})
+13. db.directors.aggregate([
+... {$match:{_id:1}},
+... {$lookup:
+... {from:"movies",
+... localField:"movies",
+... foreignField:"_id",
+... as:"movies"}}]).pretty()
