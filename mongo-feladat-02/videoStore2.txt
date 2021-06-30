@@ -29,3 +29,8 @@
 ... localField:"movies",
 ... foreignField:"_id",
 ... as:"movies"}}]).pretty()
+
+Adatbázis importálása .json fájlból
+use newdb
+db.restauratnt.count()
+1. db.restaurant.find({borough:"Brooklyn"},{_id:0,name:1,address:1,borough:1}).pretty()

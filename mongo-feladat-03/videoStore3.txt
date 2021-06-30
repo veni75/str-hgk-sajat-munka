@@ -1,0 +1,10 @@
+1. use videoStore
+2. db.movies.find({$or:[{category:"fantasy"},{category:"action"}]}).count()
+3. var fantasy = db.movies.find({category:"fantasy"},{title:1,category:1})
+4. fantasy.map(item=>`${item.title}:${item.category}`)
+5. db.movies.find({},{_id:0,title:1}).sort({_id:-1})
+6. db.movies.find({},{_id:0,title:1,category:1,releaseYear:1}).sort({category:1,releaseYear:-1})
+7. db.movies.find({category:"action"}).sort({releaseYear:-1}).limit(1)
+8. db.movies.find({},{_id:0,title:1,releaseYear:1}).sort({releaseYear:1}).limit(2)
+9. db.movies.find({category:"romantic"},{_id:0,title:1,releaseYear:1}).sort({releaseYear:-1}).skip(1).limit(1)
+10. 
