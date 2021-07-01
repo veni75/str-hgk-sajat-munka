@@ -3,7 +3,8 @@
 4. db.movies.updateMany({},{$set:{ratings:[]}})
 5. db .movies.update({title:"Alkonyat"},{$push:{ratings:4}})
 6. db.movies.updateMany({},{$set:{releaseYear:2000}})
-7.
+7. var movieList = db.movies.find()
+   movieList.forEach(function(data){db.movies.updateOne({_id:data._id},{$set:{category:data.category.toUpperCase()}})})
 8. db.movies.find()
 9-10. pwd()
 function setYearToMovies() {
