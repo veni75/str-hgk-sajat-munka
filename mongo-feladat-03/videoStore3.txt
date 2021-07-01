@@ -7,4 +7,5 @@
 7. db.movies.find({category:"action"}).sort({releaseYear:-1}).limit(1)
 8. db.movies.find({},{_id:0,title:1,releaseYear:1}).sort({releaseYear:1}).limit(2)
 9. db.movies.find({category:"romantic"},{_id:0,title:1,releaseYear:1}).sort({releaseYear:-1}).skip(1).limit(1)
-10. 
+10. paging.js fájlban
+load("C:\\Users\\hadik\\Documents\\Eniko\\traininghalado\\str-hgk-sajat-munka\\mongo-feladat-03\\paging.js")
