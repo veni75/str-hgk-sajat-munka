@@ -1,0 +1,19 @@
+1. db.createCollection("cinemas",{
+... validator:{
+... $jsonSchema:{
+... required:["_id","name","movies","address"],
+... properties:{
+... _id:{bsonType:"int"},
+... name:{bsonType:"string",pattern:"[a-zA-Z0-9 ]+"},
+... movies:{bsonType:"array"},
+... address:{bsonType:"object"}
+... }}}})
+db.cinemas.insert({_id:NumberInt(1),name:"Koztarsasag",movies:["Alkonyat","Star wars","Titanic"],address:{city:"Székesfehérvár"}})
+db.cinemas.insert({_id:NumberInt(2),name:"Apollo",movies:["Párbaj","Terminátor","Titanic"],address:{city:"Salgótarján"}})
+db.cinemas.insert({_id:NumberInt(3),name:"Alba Plaza",movies:["Terminal","Utazás Dardzsilingbe","Az igazság útja"],address:{city:"Székesfehévrár"}})
+2.
+3.
+4.
+5.
+6.
+7.
