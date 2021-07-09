@@ -11,8 +11,8 @@
 db.cinemas.insert({_id:NumberInt(1),name:"Koztarsasag",movies:["Alkonyat","Star wars","Titanic"],address:{city:"Székesfehérvár"}})
 db.cinemas.insert({_id:NumberInt(2),name:"Apollo",movies:["Párbaj","Terminátor","Titanic"],address:{city:"Salgótarján"}})
 db.cinemas.insert({_id:NumberInt(3),name:"Alba Plaza",movies:["Terminal","Utazás Dardzsilingbe","Az igazság útja"],address:{city:"Székesfehévrár"}})
-2.
-3.
+2. db.cinemas.aggregate([ {$lookup: {from:"movies",localField:"movies",foreignField:"title",as:"movie"}}])
+3. db.cinemas.aggregate([ {$lookup: {from:"movies",localField:"movies",foreignField:"title",as:"movie"}}])
 4.
 5.
 6.
