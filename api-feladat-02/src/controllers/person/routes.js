@@ -3,21 +3,19 @@ const data = require('./data');
 
 const controller = express.Router();
 
-controller.get('/count', (req, res) => {      
+controller.get('/count', (req, res) => {
     res.json(data.length);
 });
 
 controller.get('/vaccinated', (req, res) => {
-    let result = data.filter(dat=>dat.vaccine !== "");
+    let result = data.filter(dat => dat.vaccine !== "");
     res.json(result);
 });
 
 //1.
-controller.get('/:id/vaccinated', (req, res) => {      
-    const person=data.find(pers=>pers.id===Number(req.params.id));
-    if(person.vaccine){
-        res.json(person.vaccine);
-    }
+controller.get('/:id/vaccinated', (req, res) => {
+    const person = data.find(pers => pers.id === Number(req.params.id));
+    res.json(person.vaccine);
 });
 
 // 2. Create a new person.
@@ -34,7 +32,7 @@ controller.post('/', (req, res) => {
 controller.put('/:id', (req, res) => {
     const id = req.params.id;
     const index = data.findIndex(p => p.id === Number(id));
-    const {firstName, lastName, vaccine} = req.body;
+    const { firstName, lastName, vaccine } = req.body;
 
     data[index] = {
         id,
@@ -48,7 +46,7 @@ controller.put('/:id', (req, res) => {
 
 // 4. Delete
 controller.delete('/:vaccine', (req, res) => {
-    data = data.filter(p => p.vaccine !== vaccine);    
+    data = data.filter(p => p.vaccine !== vaccine);
     res.json({});
 });
 
