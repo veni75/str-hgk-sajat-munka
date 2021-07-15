@@ -32,7 +32,7 @@ controller.post('/', (req, res) => {
 controller.put('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
-    const index = data.findIndex(p => p.id === Number(id));
+    /* const index = data.findIndex(p => p.id === Number(id));
     const { firstName, lastName, vaccine } = req.body;
 
     data[index] = {
@@ -42,7 +42,7 @@ controller.put('/:id', (req, res) => {
         vaccine
     };
 
-    res.json(data);
+    res.json(data); */
 });
 
 // 4. Delete

@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Sample Blog API
+  description: A sample blog API to illustrate REST API concepts
+servers:
+  - url: http://localhost:3000
+paths:
+  /person:
+    get:
+      description: Returns numbers of persons
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Number of persons returned successfully
+          content:
+            application/json:
+              schema:
+                type: number
+                items:
+                  $ref: ''
+        
+    get:
+      description: Returns vaccinated persons
+      security:
+        - bearerAuth: []
+      
+      responses:
+        '200':
+          description: vaccinated persons has been returned successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ''
+
+        
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Person:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - vaccine
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        vaccine:
+          type: string
+    

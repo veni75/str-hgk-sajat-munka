@@ -1,7 +1,7 @@
 module.exports = [{
     "id": 1,
-    "firstName": "Fiorenze",
-    "lastName": "Dyneley",
+    "firstName": "Jeno",
+    "lastName": "Árpi",
     "vaccine": "Moderna"
 }, {
     "id": 2,
