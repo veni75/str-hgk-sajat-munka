@@ -7,12 +7,18 @@ fetch('http://localhost:3000/person', {
 }).then(r => r.json())
     .then(d => console.log(d));
 
+
     fetch('http://localhost:3000/person/Jensen', {
-        method: 'DELETE'
+        method: 'DELETE',
     }).then(r => r.json())
         .then(d => console.log(d));
 
-        fetch('http://localhost:3000/user/6', { 
-    method: 'DELETE', 
+       
+    fetch('http://localhost:3000/person/1/Sinofarm', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    
 }).then(r => r.json())
     .then(d => console.log(d));

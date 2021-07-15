@@ -29,11 +29,11 @@ controller.post('/', (req, res) => {
 });
 
 // 3. Update a person.
-controller.put('/:id', (req, res) => {
-    const id = req.params.id;
-    console.log(id);
-    /* const index = data.findIndex(p => p.id === Number(id));
-    const { firstName, lastName, vaccine } = req.body;
+controller.put('/:id/:vaccine', (req, res) => {
+    const id = req.params.id;    
+    const vaccine = req.params.vaccine;
+    const index = data.findIndex(p => p.id === Number(id));
+    const { firstName, lastName } = data[index];
 
     data[index] = {
         id,
@@ -42,13 +42,14 @@ controller.put('/:id', (req, res) => {
         vaccine
     };
 
-    res.json(data); */
+    res.json(data); 
 });
 
 // 4. Delete
-controller.delete('/:vaccine', (req, res) => {       
-    data = data.filter(p => p.vaccine !== req.params.vaccine);
-    res.json({}); 
+controller.delete('/:vaccine', (req, res) => {  
+    const vaccina = req.params.vaccine;    
+    let result = data.filter(p => p.vaccine !== vaccina);
+    res.json(result); 
 });
 
 module.exports = controller;
