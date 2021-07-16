@@ -6,8 +6,7 @@ const Person = require('../../models/person.model');
 const controller = express.Router();
 
 controller.get('/count', async (req, res, next) => {
-    const people = await Person.find();
-    console.log(people);
+    const people = await Person.find({});
     let result = people.filter(pe => pe.vaccine !== "");
     if (!result) {
         return next(new createError.NotFound("Vaccinated Person is not found"));
