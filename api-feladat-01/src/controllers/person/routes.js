@@ -3,8 +3,9 @@ const data = require('./data');
 
 const controller = express.Router();
 
-controller.get('/count', (req, res) => {      
-    res.json(data.length);
+controller.get('/count', (req, res) => {   
+    let result = data.filter(dat=>dat.vaccine !== "");   
+    res.json(result.length);
 });
 
 controller.get('/vaccinated', (req, res) => {
