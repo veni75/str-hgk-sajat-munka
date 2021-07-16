@@ -10,9 +10,9 @@ mongoose
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
-    .then( () => logger.info('MongoDB connection has been established successfully.'))
+    .then( () => console.log('MongoDB connection has been established successfully.'))
     .catch( err => {
-        logger.error(err);
+        console.error(err);
         process.exit();
     });
 
