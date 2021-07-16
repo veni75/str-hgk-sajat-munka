@@ -11,9 +11,9 @@
 db.cinemas.insert({_id:NumberInt(1),name:"Koztarsasag",movies:["Alkonyat","Star wars","Titanic"],address:{city:"Székesfehérvár"}})
 db.cinemas.insert({_id:NumberInt(2),name:"Apollo",movies:["Párbaj","Terminátor","Titanic"],address:{city:"Salgótarján"}})
 db.cinemas.insert({_id:NumberInt(3),name:"Alba Plaza",movies:["Terminal","Utazás Dardzsilingbe","Az igazság útja"],address:{city:"Székesfehévrár"}})
-2. db.cinemas.aggregate([ {$lookup: {from:"movies",localField:"movies",foreignField:"title",as:"movie"}}])
-3. db.cinemas.aggregate([ {$lookup: {from:"movies",localField:"movies",foreignField:"title",as:"movie"}}])
+2. db.cinemas.aggregate([{$match:{_id:1}}, {$lookup: {from:"movies",localField:"movies",foreignField:"title",as:"movie"}}])
+3. db.cinemas.aggregate([{$match:{_id:1}}, {$project: {"movies":1}},{$lookup: {from:"movies", localField: "movies", foreignField: "title", as:"movie"}}])
 4.
-5.
-6.
+5. db.directors.aggregate([{$match:{_id:1}}, {$lookup: {from:"movies", localField: "movies", foreignField: "_id", as:"movie-title"}}])
+6. db.directors.aggregate([{$match:{_id:2}}, {$project: {"name":1, "_id":0}}, {$lookup: {from:"movies", localField: "movies", foreignField: "_id", as:"movieTitles"}}]).pretty()
 7.

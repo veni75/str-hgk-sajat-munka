@@ -4,7 +4,8 @@ const data = require('./data');
 const controller = express.Router();
 
 controller.get('/count', (req, res) => {
-    res.json(data.length);
+    let result = data.filter(dat=>dat.vaccine !== "");   
+    res.json(result.length);
 });
 
 controller.get('/vaccinated', (req, res) => {
@@ -23,7 +24,6 @@ controller.post('/', (req, res) => {
     const newPerson = req.body;
     newPerson.id = data[data.length - 1].id + 1;
     data.push(newPerson);
-
     res.status(201);
     res.json(newPerson);
 });
