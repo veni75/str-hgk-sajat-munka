@@ -4,12 +4,19 @@ const createError = require('http-errors');
 
 const controller = express.Router();
 
-controller.get('/count', (req, res) => {
-    res.json(data.length);
+controller.get('/count', (req, res, next) => {
+    let result = data.filter(dat => dat.vaccine !== "");
+    if (!result) {
+        return next(new createError.NotFound("Vaccinated Person is not found"));
+    }
+    res.json(result.length);
 });
 
-controller.get('/vaccinated', (req, res) => {
+controller.get('/vaccinated', (req, res, next) => {
     let result = data.filter(dat => dat.vaccine !== "");
+    if (!result) {
+        return next(new createError.NotFound("Vaccinated Person is not found"));
+    }
     res.json(result);
 });
 
@@ -19,7 +26,11 @@ controller.get('/:id/vaccinated', (req, res, next) => {
     if (!person) {
         return next(new createError.NotFound("Person is not found"));
     }
-    res.json(person.vaccine);
+    if (person.vaccine) {
+        res.json(person.vaccine);
+    } else {
+        res.json(false);
+    }
 });
 
 // 2. Create a new person.
@@ -62,7 +73,7 @@ controller.put('/:id/:vaccine', (req, res, next) => {
 });
 
 // 4. Delete
-controller.delete('/:vaccine', (req, res,next) => {
+controller.delete('/:vaccine', (req, res, next) => {
     const vaccina = req.params.vaccine;
     if (!vaccina) {
         return next(new createError.NotFound("Vaccine is not found"));
