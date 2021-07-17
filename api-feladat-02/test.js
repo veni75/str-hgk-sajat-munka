@@ -1,3 +1,4 @@
+//create
 fetch('http://localhost:3000/person', {
     method: 'POST',
     headers: {
@@ -7,13 +8,13 @@ fetch('http://localhost:3000/person', {
 }).then(r => r.json())
     .then(d => console.log(d));
 
-
+//delete
     fetch('http://localhost:3000/person/Jensen', {
         method: 'DELETE',
     }).then(r => r.json())
         .then(d => console.log(d));
 
-       
+       //update
     fetch('http://localhost:3000/person/1/Sinofarm', {
     method: 'PUT',
     headers: {
