@@ -104,7 +104,9 @@ controller.delete('/:vaccine', async (req, res, next) => {
     let resultId = result.map(r => r.id);
 
     try {
-        const person = await Person.findByIdAndDelete(resultId);
+        resultId.map(async (ri)=>{
+            await Person.findByIdAndDelete(ri);
+        })        
     } catch (err) {
         return next(new createError.NotFound("Vaccine is not found"));
     }
