@@ -1,0 +1,6 @@
+{
+    "database": {
+        "databasename": "na",        
+        "host": "localhost:27017"
+    }
+}
