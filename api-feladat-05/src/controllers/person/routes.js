@@ -6,7 +6,8 @@ const Person = require('../../models/person.model');
 const controller = express.Router();
 
 controller.get('/count', async (req, res, next) => {
-    const people = await Person.find({});
+    const people = await Person.find();
+    console.log(people);
     let result = people.filter(pe => pe.vaccine !== "");
     if (!result) {
         return next(new createError.NotFound("Vaccinated Person is not found"));
@@ -48,7 +49,7 @@ controller.post('/', (req, res, next) => {
     const newPerson = new Person({
         firstName: firstName,
         lastName: lastName,
-        email: email
+        vaccine: vaccine
     });
     newPerson.save()
         .then(data => {
@@ -61,12 +62,13 @@ controller.post('/', (req, res, next) => {
 controller.put('/:id/:vaccine', async (req, res, next) => {
     const id = req.params.id;
     const vaccine = req.params.vaccine;
+    
     const person = await Person.findById(req.params.id);
     if (!person) {
         return next(new createError.NotFound("Person is not found"));
     }
     
-    if (!lastName || !firstName || !vaccine) {
+    if (!person.lastName || !person.firstName || !vaccine) {
         return next(
             new createError.BadRequest("Missing properties!")
         );
@@ -96,9 +98,17 @@ controller.delete('/:vaccine', async(req, res, next) => {
     const vaccina = req.params.vaccine;
     if (!vaccina) {
         return next(new createError.NotFound("Vaccine is not found"));
-    }
+    } 
     const people = await Person.find();
-    let result = people.filter(p => p.vaccine !== vaccina);
+    let result = people.filter(p => p.vaccine === vaccina);
+    let resultId = result.map(r=>r.id);
+    
+    try {
+        const person = await Person.findByIdAndDelete(resultId);
+    } catch (err) {
+        return next(new createError.NotFound("Vaccine is not found"));
+    }
+   
     res.json(result);
 });
 
