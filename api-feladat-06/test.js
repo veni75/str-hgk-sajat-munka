@@ -1,0 +1,24 @@
+//create
+fetch('http://localhost:3000/person', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({firstName: 'Jeno', lastName: 'Árpi', vaccine: 'Moderna'})
+}).then(r => r.json())
+    .then(d => console.log(d));
+
+//delete
+    fetch('http://localhost:3000/person/Jensen', {
+        method: 'DELETE',
+    }).then(r => r.json())
+        .then(d => console.log(d));
+
+//update
+    fetch('http://localhost:3000/person/60f1ee896636324d166aae03/Sinofarm', {
+    method: 'PUT',
+    headers: {
+        'Content-Type': 'application/json'
+    },    
+}).then(r => r.json())
+    .then(d => console.log(d));

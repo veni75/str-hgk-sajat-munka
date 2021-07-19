@@ -34,7 +34,7 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./docs/swagger.yaml');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.use('/person', require('./controllers/person/routes'));
+app.use('/person', require('./controllers/person/person.routes'));
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode);
