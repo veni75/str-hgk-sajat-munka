@@ -11,6 +11,7 @@ mongoose.Promise = global.Promise;
 // Authenctication.
 const authenticateJwt = require('./auth/authenticate');
 const adminOnly = require('./auth/adminOnly');
+const authHandler = require('./auth/authHandler');
 const port = process.env.PORT || 3000;
 
 if (!config.has('database')) {
@@ -38,7 +39,9 @@ const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./docs/swagger.yaml');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.post('/login', require('./auth/login'));
+app.post('/login', authHandler.login);
+app.post('/refresh', authHandler.refresh);
+app.post('/logout', authHandler.logout);
 app.use('/person', authenticateJwt, adminOnly,require('./controllers/person/person.routes'));
 
 app.use((err, req, res, next) => {
