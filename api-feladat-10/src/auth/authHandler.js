@@ -1,24 +1,12 @@
 const jwt = require('jsonwebtoken');
-
-const Users = [
-    {
-        username: 'admin',
-        password: 'admin_pw',
-        role: 'admin'
-    },
-    {
-        username: 'user',
-        password: 'user_pw',
-        role: 'user'
-    }
-];
+const User = require('../models/user.model');
 
 const refreshTokens = [];
 
 module.exports.login = (req, res) => {
     const { username, password } = req.body;
 
-    const user = Users.find(
+    const user = User.find(
         u => u.username === username && u.password === password
     );
 

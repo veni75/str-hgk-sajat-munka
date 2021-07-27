@@ -42,7 +42,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.post('/login', authHandler.login);
 app.post('/refresh', authHandler.refresh);
 app.post('/logout', authHandler.logout);
-app.use('/person', authenticateJwt, adminOnly,require('./controllers/person/person.routes'));
+app.use('/person', authenticateJwt, require('./controllers/person/person.routes'));
 
 app.use((err, req, res, next) => {
     res.status(err.statusCode);
